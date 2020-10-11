@@ -1,0 +1,25 @@
+﻿run,position,angle,timing,pins
+4,right,left,late,96
+13,right,left,not late,99
+23,right,straight,late,97
+1,right,straight,not late,99
+19,center,left,late,88
+5,center,left,not late,94
+9,center,straight,late,98
+14,center,straight,not late,99
+11,right,left,late,97
+18,right,left,not late,97
+20,right,straight,late,99
+7,right,straight,not late,96
+2,center,left,late,98
+24,center,left,not late,99
+21,center,straight,late,96
+8,center,straight,not late,93
+15,right,left,late,95
+6,right,left,not late,98
+10,right,straight,late,99
+16,right,straight,not late,97
+17,center,left,late,92
+12,center,left,not late,98
+22,center,straight,late,99
+3,center,straight,not late,98

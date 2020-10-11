@@ -1,0 +1,213 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Effects of Position, Angle, \& Timing in 100-Pin Bowling},
+  pdfauthor={Pao Zhu Vivian Hsu},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{subfig}
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\title{Effects of Position, Angle, \& Timing in 100-Pin Bowling}
+\author{Pao Zhu Vivian Hsu}
+\date{August 17, 2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{description}{%
+\section{Description}\label{description}}
+
+100-pin bowling is a mode of bowling in \emph{Wii Sports Resort}, a video game developed by Nintendo for the Wii gaming system. Like conventional 10-pin bowling, the aim of 100-pin bowling is to knock down all the pins, ideally in a single throw called a strike. According to an \href{https://strategywiki.org/wiki/Wii_Sports/Bowling}{online forum}, it was claimed that players should position themselves to the right of the bowling lane, angle themselves slightly to the left, and throw the ball late if they wanted to knock down more pins (StrategyWiki, n.d.). The purpose of this experiment is to test these claims and determine the effects of position, angle, and timing on the number of pins knocked down.
+
+A \(2^3\) factorial experiment was conducted to determine the number of pins knocked down using 3 qualitative factors - position, angle, and timing. As shown in Figure \ref{fig:levels}, each factor had 2 levels which include \emph{right} and \emph{center}, \emph{left} and \emph{straight}, and \emph{late} and \emph{not late} respectively. The experiment had 3 repetitions and a total of 24 runs, which were randomized using R prior to the experiment. During each run, the ball was thrown based on the levels specified by the randomization. Bowling lane arrows were used to improve the consistency of position and angle. Each throw was also done while trying to maintain a consistent motion and speed. After each throw, the number of pins knocked down were recorded. Since each round consists of 2-3 throws, the second and third balls were thrown randomly and the pins knocked down were not recorded. This step replaced all 100 pins with new pins and ensured that each run had an equal probability of a strike. 2.4 games were played until all 24 runs were complete.
+
+\begin{figure}
+
+{\centering \subfloat[Position\label{fig:levels-1}]{\includegraphics[width=.28\linewidth]{position} }\subfloat[Angle\label{fig:levels-2}]{\includegraphics[width=.28\linewidth]{angle} }\subfloat[Timing\label{fig:levels-3}]{\includegraphics[width=.28\linewidth]{timing} }
+
+}
+
+\caption{Levels of position, angle, and timing}\label{fig:levels}
+\end{figure}
+
+\hypertarget{analysis}{%
+\section{Analysis}\label{analysis}}
+
+After data was collected, a linear model was fitted to estimate the main and interaction effects. The model can be written as:
+\[
+y_i = \beta_0 + \beta_1x_{i1} + \beta_1x_{i2} + \beta_3x_{i3} + \beta_4x_{i1}x_{i2} + \beta_5x_{i1}x_{i3} + \beta_6x_{i2}x_{i3} + \beta_7x_{i1}x_{i2}x_{i3} + \epsilon
+\]
+where \(y_i\) is the number of pins knocked down after the ith run and \(x_{i1}\), \(x_{i2}\), \(x_{i3}\) represent position, angle, and timing respectively. Deviation coding was used such that \emph{right} position, \emph{left} angle, and \emph{late} timing were coded as 1 while \emph{center} position, \emph{straight} angle, and \emph{not late} timing were coded as -1. A summary of the fitted linear model with the estimated effects are shown in Table \ref{tab:lmtable}.
+
+\begin{table}[H]
+
+\caption{\label{tab:lmtable}Summary of linear model}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & Estimate & Estimated Effect\\
+\midrule
+\rowcolor[HTML]{F5F9FF}  (Intercept) & 96.71 & 193.42\\
+position1 & -0.71 & -1.42\\
+\rowcolor[HTML]{F5F9FF}  angle1 & -0.79 & -1.58\\
+timing1 & -0.54 & -1.08\\
+\rowcolor[HTML]{F5F9FF}  position1:angle1 & -0.38 & -0.76\\
+position1:timing1 & -0.29 & -0.58\\
+\rowcolor[HTML]{F5F9FF}  angle1:timing1 & -1.04 & -2.08\\
+position1:angle1:timing1 & -0.29 & -0.58\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As outlined in Table \ref{tab:lmtable}, the mean number of pins that were knocked down for this sample was 96.71. The estimated means for each combination of levels is illustrated in the cube plot in Figure \ref{fig:cubeplot}. Based on this plot, the estimated mean number of pins knocked down is the highest when the ball is thrown with a \emph{right} position, \emph{straight} angle, and \emph{late} timing. It is also the lowest when thrown with a \emph{right} position, \emph{left} angle, and \emph{late} timing.
+
+\begin{figure}
+
+{\centering \includegraphics[width=.4\linewidth]{report_files/figure-latex/cubeplot-1} 
+
+}
+
+\caption{Cube plot for 100-Pin Bowling Experiment}\label{fig:cubeplot}
+\end{figure}
+
+In Table \ref{tab:lmtable}, position, angle, and timing had estimated main effects of -1.42, -1.58, and -1.08 respectively. Since the sign of these effects are negative, this means a greater number of pins are knocked down using levels that are coded as -1 rather than 1 on average. In other words, this means the average number of pins knocked down is greater when the ball is thrown using a \emph{center} position rather than a \emph{right} position. It is also greater when thrown with a \emph{straight} angle rather than a \emph{left} angle. And finally, it is greater when thrown with a \emph{not late} timing rather than a \emph{late} timing.
+
+The estimated two-factor interaction effect between position and angle, position and timing, and angle and timing was -0.76, -0.58, and -2.08 respectively. For position and angle, the sign of the interaction effect is negative. This means the average effect of position is greater when a \emph{straight} angle is used compared to a \emph{left} angle. Likewise, for the remaining two interactions, the signs are also negative and so the average effect of position and the average effect of angle is greater when a \emph{not late} timing is used rather than a \emph{late} timing. As shown in Figure \ref{fig:intplots}, the lines in plot (a) and (b) do not intersect while the lines in plot (c) do. This means there there may be an interaction between angle and timing, but no interaction between position and angle or position and timing. This can be seen from the estimated interaction effects in Table \ref{tab:lmtable} since the magnitude of the effect between angle and timing is large (2.08) compared the magnitude for the remaining two interactions which are quite small (0.76 for position and angle; 0.58 for position and timing).
+
+The estimated three-factor interaction effect between position, angle, and timing was -0.58 as shown earlier in Table \ref{tab:lmtable}. Since it is negative, this means the two-factor interaction between position and angle is greater when a \emph{not late} timing is applied compared to a \emph{late} timing.
+
+\begin{figure}
+
+{\centering \subfloat[Position and angle\label{fig:intplots-1}]{\includegraphics[width=.33\linewidth]{report_files/figure-latex/intplots-1} }\subfloat[Position and timing\label{fig:intplots-2}]{\includegraphics[width=.33\linewidth]{report_files/figure-latex/intplots-2} }\subfloat[Timing and angle\label{fig:intplots-3}]{\includegraphics[width=.33\linewidth]{report_files/figure-latex/intplots-3} }
+
+}
+
+\caption{Interaction plots}\label{fig:intplots}
+\end{figure}
+
+After the effects were analyzed, hypothesis tests at 10\% significance level were performed to check which effects were most likely real and which were due to chance. The hypothesis tests were defined with
+\[
+\begin{aligned}
+H_0:& \beta_j = 0 \\
+H_1:& \beta_j \not= 0
+\end{aligned}
+\]\\
+for \(j=1,...,7\). Table \ref{tab:lmtable2} summarizes the p-values and 90\% confidence intervals for each of the estimates.
+
+\begin{table}[H]
+
+\caption{\label{tab:lmtable2}Hypothesis tests for main and interaction effects}
+\centering
+\begin{tabular}[t]{lrrr}
+\toprule
+  & P-value & 90\% CI Lower Bound & 90\% CI Upper Bound\\
+\midrule
+\rowcolor[HTML]{F5F9FF}  (Intercept) & 0.00 & 191.62 & 195.21\\
+position1 & 0.19 & -3.21 & 0.38\\
+\rowcolor[HTML]{F5F9FF}  angle1 & 0.14 & -3.38 & 0.21\\
+timing1 & 0.31 & -2.88 & 0.71\\
+\rowcolor[HTML]{F5F9FF}  position1:angle1 & 0.48 & -2.54 & 1.04\\
+position1:timing1 & 0.58 & -2.38 & 1.21\\
+\rowcolor[HTML]{F5F9FF}  angle1:timing1 & 0.06 & -3.88 & -0.29\\
+position1:angle1:timing1 & 0.58 & -2.38 & 1.21\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Based on the table, the interaction effect between angle and timing is the only effect that is likely real and not due to chance. The reason for this is because its associated p-value is less than the 10\% significance level and its confidence interval does not contain 0. Thus, \(H_0\) was rejected and so there is evidence that the effect is not due to chance. All the main effects and the remaining interaction effects have p-values that are larger than the 10\% significance level and confidence intervals that contain 0. Therefore, \(H_0\) was not rejected and so the effects could have been due to chance.
+
+\hypertarget{conclusions-and-discussions}{%
+\section{Conclusions and Discussions}\label{conclusions-and-discussions}}
+
+Based on the linear model, the estimated main effects and interaction effects suggested that using \emph{center} position, \emph{straight} angle, and \emph{not late} timing was more effective in knocking down more pins compared to using \emph{right} position, \emph{left} angle, and \emph{late} timing. However, hypothesis testing showed that these effects could have been due to chance, except for the interaction between angle and timing which had statistical evidence that indicated a greater average effect on angle with a \emph{not late} timing rather than a \emph{late} timing. Thus, there is no statistical evidence that using a \emph{right} position, \emph{left} angle, and \emph{late} timing will increase the average number of pins a player knocks down and so the claims made on the \href{https://strategywiki.org/wiki/Wii_Sports/Bowling}{online forum} may not be true.
+
+Nevertheless, the results in this study should be carefully interpreted because various sources of error do exist. Firstly, there may have been inconsistencies with maintaining consistency for each of the factors. While bowling lane arrows were used to keep position and angle consistent, a possibility of minor inconsistencies still remains. For timing, a \emph{late} timing (or \emph{not late} timing) was thrown based on personal judgment during each throw. This judgment could differ each time and so there were no measures taken to keep this consistent. These inconsistencies could bias the results. Secondly, there may have also been inconsistencies with maintaining motion and speed for each throw. Inconsistent motions may cause the ball to curve and hit the pins differently compared to a throw without curve. Inconsistent speed may create more or less power to knock down the pins. Thus, these factors may have also biased the results. Lastly, the study only involved data from one individual. The results could be biased since sample may not represent the entire population of people who play 100-pin bowling. For example, the sampled individual has over 10 years of experience with playing 100-pin bowling and has achieved all the in-game achievements associated with it. This may not represent the amount of experience and skill that a typical player has and so the claims on the forum might have been true for the general population, but not the individual. Hence, the results of this study could have been biased and may only be applicable to the sampled individual.
+
+For future studies, it is recommended that more measures are taken to ensure consistencies with the 3 factors, motion, and speed. It is also suggested for the data should be sampled from a greater number of individuals. Doing so would will help to improve generalizability and reduce bias so that better analyses could be performed to estimate the true effects of position, angle, and timing in knocking down pins in 100-pin bowling.
+
+\hypertarget{reference}{%
+\section{Reference}\label{reference}}
+
+StrategyWiki. (n.d.). Wii Sports/Bowling --- StrategyWiki, the video game walkthrough and strategy guide wiki. Retrieved August 18, 2020, from \url{https://strategywiki.org/wiki/Wii_Sports/Bowling}
+
+\end{document}

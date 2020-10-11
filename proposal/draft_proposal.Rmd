@@ -1,0 +1,37 @@
+---
+title: "Draft Proposal"
+subtitle: "Effects of Position, Angle, & Timing in 100-Pin Bowling"
+author: "Pao Zhu Hsu"
+date: "August 3, 2020"
+output: pdf_document
+---
+
+# Objectives
+
+100-pin bowling is a mode of bowling in _Wii Sports Resort_, a video game developed by Nintendo for the Wii gaming system. Like conventional 10-pin bowling, the aim of 100-pin bowling is to knock down all the pins, ideally in a single throw called a strike. 100-pin bowling was my favourite game as a child and has recently become one of my favourite pastimes during the COVID-19 pandemic.
+
+According to an online [forum](https://strategywiki.org/wiki/Wii_Sports/Bowling), players claimed that the position, angle, and timing of throwing the bowling ball can impact the number of pins knocked down. Specifically, they said that the player should position themselves to the right of the bowling lane, angle themselves slightly to the left, and throw the ball late if they wanted to knock down more pins. The purpose of my experiment is to test their claims and __determine the effects of position, angle, and timing on the number of pins knocked down__ in 100-pin bowling.
+
+
+# Methods
+
+The experiment will be a 2$^3$ factorial experiment with three qualitative factors - position (P), angle (A), and timing (T). The outcome of interest is the number of pins knocked down (Y).
+
+- Position has two levels, _right_ and _center_, which are coded as 1 and -1 respectively.
+- Angle has two levels, _left_ and _straight_, which are coded as 1 and -1 respectively.
+- Timing has two levels, _late_ and _not late_, which are coded as 1 and -1 respectively.
+
+There are 2$^3=8$ different combinations of the three factors. I plan to perform 3 runs of each combination, so there will be a total of $8 \times 3 = 24$ runs. Since each game has 10 rounds, I can perform 10 runs in a single game. Therefore, I will play $2\frac{4}{10}$ worth of games to complete all the runs. The following procedure will be used to collect the data:
+
+1. __Using R, randomize the order of the 24 runs.__ This will prevent any bias that may arise from getting tired or getting better at throwing as I throw more bowling balls. This is crucial for making causal inferences during analysis.
+2. __Throw the ball based on the run combination specified in step 1.__ Try to keep a consistent motion and speed when throwing the ball to prevent bias in the results. We will assume that the motion and speed of throwing is consistent since differences may result in bias and cause issues with causal inference. For a similar reason, we will also assume that the position, angle, and timing is consistent for all the runs based on factor level. If there are major inconsistencies after performing the experiment, this will be addressed in the discussion section.
+3. __Record the number of pins knocked down.__ The game will provide this information after your throw.
+4. __Randomly throw the second and third balls if a strike was not obtained in step 3. Do not record the number of pins knocked down from these throws. If the game ends (i.e. if 10 rounds have been completed), then start a new game.__ The purpose of this step is just to move the game to the next round so that all the pins will be replaced with 100 new pins. This will ensure that there is the same number of pins at the start of each run and that the probability of knocking down 100 pins is not 0. Without this step, the results will be biased and causal inference may not be possible.
+5. __Repeat steps 2-4 until all 24 runs are completed.__
+
+
+# Statistical Analysis Plan
+
+There will be three major components in my analysis. For the first component, I will provide summary statistics on the number of pins knocked down. Specifically, I will compute the mean number of pins knocked down and the estimated variance for each combination of factors. I will also specify the pooled variance for all of the 8 combinations. For the next component, I will provide visualizations including a cube plot to outline the various combinations of factors in the experiment and interaction plots to show the mean number of pins knocked down for each combination of factors. For the last component, I will build a linear regression model to estimate the mean number of pins knocked down by interpreting the coefficients in the model. I will also interpret the p-values and confidence intervals associated with it. Based on these three components, I will then form a conclusion on the effects of position, angle, and timing on the number of pins knocked down in 100-pin bowling.
+
+

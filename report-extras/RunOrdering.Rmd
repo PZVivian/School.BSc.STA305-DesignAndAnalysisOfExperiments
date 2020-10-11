@@ -1,0 +1,25 @@
+---
+title: "Run Ordering"
+output: html_notebook
+---
+
+```{r}
+# 2^3 possible run combinations
+set.seed(123)
+runCombos <- data.frame(
+  run.combo = c(1:8),
+  position = rep(c("right", "center"),each=4),
+  angle = rep(rep(c("left", "straight"),each=2),2),
+  timing = rep(c("late","not late"),4)
+)
+kable(runCombos,
+      format="latex",
+      booktabs=T)
+
+# Randomize the runs for 3 repetitions
+run.unordered <- rep(runCombos$run.combo,3)
+run.order <- sample(run.unordered,size=24,replace=F)
+run.order
+```
+
+
